@@ -56,3 +56,16 @@ As we are using PDM for managing python dependencies of the project, we are able
 
 To add DVC to the project, we need to do a one time initialization by running `pdm run dvc init`. This will generate a `.dvc` directory which stores it's [internal files](https://dvc.org/doc/user-guide/project-structure/internal-files) as well as a files to DVC what files it should ignore.
 
+### Program Execution
+
+The first place to start using DVC is to wrap the execution of the model with DVC, allowing dvc to track specified dependencies, parameters and outputs. 
+
+At the moment, our primary dependency is the python file itself, and we should also include the pyproject.toml and pdm.lock files as our results might change if we change something about our dependencies.
+
+```bash
+pdm run dvc stage add -n tutorial -d quickstart_tutorial.py -d pyproject.toml -d pdm.lock python quickstart_tutorial.py
+```
+
+### Reproducing Results
+
+DVC allows us to reproduce the results of a specific Git commit by running `pdm run dvc repro`.
