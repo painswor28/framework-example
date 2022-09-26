@@ -41,3 +41,18 @@ pdm add torch torchvision
 ### Execution
 
 When we have defined our dependencies, we can then run the software. There are two paths to this, if we [globally enable PEP 582](https://pdm.fming.dev/latest/usage/pep582/#enable-pep-582-globally) then we are able to run the code with as a normal python script e.g. `python quickstart_tutorial.py`. However, we can also run in an isolated environment by using `pdm run python quickstart_tutorial.py`.
+
+## Data Version Control (DVC)
+
+> DVC is built to make ML models shareable and reproducible. It is designed to handle large files, data sets, machine learning models, and metrics as well as code.
+>
+> --- [DVC Website](https://dvc.org/)
+
+### Installation
+
+As we are using PDM for managing python dependencies of the project, we are able to add DVC by running `pdm add dvc`. This will add it to the `pyproject.toml` file and install it into the environment.
+
+### Initialization
+
+To add DVC to the project, we need to do a one time initialization by running `pdm run dvc init`. This will generate a `.dvc` directory which stores it's [internal files](https://dvc.org/doc/user-guide/project-structure/internal-files) as well as a files to DVC what files it should ignore.
+
