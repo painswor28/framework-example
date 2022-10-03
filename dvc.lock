@@ -1,0 +1,14 @@
+schema: '2.0'
+stages:
+  tutorial:
+    cmd: python quickstart_tutorial.py
+    deps:
+    - path: pdm.lock
+      md5: 644024cf0108e867753495ea0d557e4e
+      size: 227266
+    - path: pyproject.toml
+      md5: 9d6aa8875c8bf9bc6d1d61e70c64aace
+      size: 316
+    - path: quickstart_tutorial.py
+      md5: 7c8c08888db819696e18733511efd1b3
+      size: 8428

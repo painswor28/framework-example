@@ -68,4 +68,4 @@ pdm run dvc stage add -n tutorial -d quickstart_tutorial.py -d pyproject.toml -d
 
 ### Reproducing Results
 
-DVC allows us to reproduce the results of a specific Git commit by running `pdm run dvc repro`.
+DVC allows us to reproduce the results by running `pdm run dvc repro`. This will execute the code and track the information we have told DVC to track. It stores this information in te `dvc.lock` file. If we run the repro command again, DVC will tell us that nothing changed and so we don't need to run anything.
