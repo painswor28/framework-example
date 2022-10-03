@@ -69,3 +69,23 @@ pdm run dvc stage add -n tutorial -d quickstart_tutorial.py -d pyproject.toml -d
 ### Reproducing Results
 
 DVC allows us to reproduce the results by running `pdm run dvc repro`. This will execute the code and track the information we have told DVC to track. It stores this information in te `dvc.lock` file. If we run the repro command again, DVC will tell us that nothing changed and so we don't need to run anything.
+
+### Input Dependency Tracking
+
+When we first ran the repro command, pytorch downloaded an input dataset. It is possible that a future version of PyTorch, or the web URL may redirect to a different dataset. With DVC, we can tell it to keep track of our input dataset and it will make sure that it does not change (unless we ask it to). 
+
+By running `pdm run dvc add data`, we can tell DVC to track the data directory. It will hash the files and create a `data.dvc` file that stores metadata about the folder.
+
+Once we have added the data folder to DVC's tracking, we need to update our pipeline stage to add the data directory as a dependency to our command. To do that, we run the following (notice the `-f` flag to force updating the entry in `dvc.yaml` and the `-d data` which adds the data directory as a dependency)
+
+```bash
+pdm run dvc stage add -f \
+    -n tutorial \
+    -d quickstart_tutorial.py \
+    -d pyproject.toml \
+    -d pdm.lock \
+    -d data \
+    python quickstart_tutorial.py
+```
+
+Now, we can run `pdm run dvc repro` and it will regenerate the lock file which will now also contain the data directory metadata.

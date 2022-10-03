@@ -3,12 +3,16 @@ stages:
   tutorial:
     cmd: python quickstart_tutorial.py
     deps:
+    - path: data
+      md5: 18d3ba9f82aa57f2f5267753f1659e05.dir
+      size: 85828693
+      nfiles: 8
     - path: pdm.lock
-      md5: 644024cf0108e867753495ea0d557e4e
-      size: 227266
+      md5: 1d1069b716c060238c896a63590188c7
+      size: 232463
     - path: pyproject.toml
-      md5: 9d6aa8875c8bf9bc6d1d61e70c64aace
-      size: 316
+      md5: 852db9179fb11d0b7a4c002da274a0e9
+      size: 458
     - path: quickstart_tutorial.py
       md5: 7c8c08888db819696e18733511efd1b3
       size: 8428
