@@ -6,3 +6,13 @@ stages:
       - pdm.lock
       - pyproject.toml
       - quickstart_tutorial.py
+    outs:
+      - model.pth
+  evaluate:
+    cmd: python quickstart_tutorial_eval.py
+    deps:
+      - data
+      - model.pth
+      - pdm.lock
+      - pyproject.toml
+      - quickstart_tutorial_eval.py

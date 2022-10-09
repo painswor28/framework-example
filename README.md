@@ -89,3 +89,35 @@ pdm run dvc stage add -f \
 ```
 
 Now, we can run `pdm run dvc repro` and it will regenerate the lock file which will now also contain the data directory metadata.
+
+### Pipelines
+
+Until now, we have added a single stage to our pipeline. In a real application, we should seperate these stages out into individual functions to allow us to better track their dependencies and only re-execute stages that have an input that has changed. 
+
+To do this, we are going to split out the evaluation stage of `quickstart_tutorial.py` and create `quickstart_tutorial_eval.py`. First, we need to update the first stage to mark `model.pth` as an output.
+
+```bash
+pdm run dvc stage add -f \
+    -n tutorial \
+    -d quickstart_tutorial.py \
+    -d pyproject.toml \
+    -d pdm.lock \
+    -d data \
+    -o model.pth \
+    python quickstart_tutorial.py
+```
+
+Then, we add a new stage that uses that output as a dependency.
+
+```bash
+pdm run dvc stage add -f \
+    -n evaluate \
+    -d quickstart_tutorial_eval.py \
+    -d pyproject.toml \
+    -d pdm.lock \
+    -d data \
+    -d model.pth \
+    python quickstart_tutorial_eval.py
+```
+
+Now, we can run `pdm run dvc repro` and it will run both stages in order and regenerate the lock file. From now on, the evaluate phase will only be executed if the output from the training stage changes.
