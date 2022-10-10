@@ -121,3 +121,18 @@ pdm run dvc stage add -f \
 ```
 
 Now, we can run `pdm run dvc repro` and it will run both stages in order and regenerate the lock file. From now on, the evaluate phase will only be executed if the output from the training stage changes.
+
+### Parameters
+```bash
+pdm run dvc stage add -f \
+    -n tutorial \
+    -d quickstart_tutorial.py \
+    -d pyproject.toml \
+    -d pdm.lock \
+    -d data \
+    -o model.pth \
+    -p batch_size \
+    -p lr \
+    -p epochs \
+    python quickstart_tutorial.py
+```

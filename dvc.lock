@@ -14,11 +14,16 @@ stages:
       md5: 6796b57a75a3c607811e588a2e076064
       size: 457
     - path: quickstart_tutorial.py
-      md5: 860c139d23aa3fdbc7c2121ef69344eb
-      size: 7468
+      md5: 056299bf161a8734972778178cdf0ee8
+      size: 7577
+    params:
+      params.yaml:
+        batch_size: 64
+        epochs: 5
+        lr: 0.001
     outs:
     - path: model.pth
-      md5: 29025d797af5d6311da356ba6331b8c2
+      md5: cd07c74cc98e87b925a8f2fc9d5c801c
       size: 2680919
   evaluate:
     cmd: python quickstart_tutorial_eval.py
@@ -28,7 +33,7 @@ stages:
       size: 85828693
       nfiles: 8
     - path: model.pth
-      md5: 29025d797af5d6311da356ba6331b8c2
+      md5: cd07c74cc98e87b925a8f2fc9d5c801c
       size: 2680919
     - path: pdm.lock
       md5: 6dafda631e111b94856a625f631920cd

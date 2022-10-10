@@ -27,6 +27,9 @@ from torch import nn
 from torch.utils.data import DataLoader
 from torchvision import datasets
 from torchvision.transforms import ToTensor
+from yaml import safe_load
+
+params = safe_load(open("params.yaml"))
 
 ######################################################################
 # PyTorch offers domain-specific libraries such as `TorchText <https://pytorch.org/text/stable/index.html>`_,
@@ -59,7 +62,7 @@ test_data = datasets.FashionMNIST(
 # automatic batching, sampling, shuffling and multiprocess data loading. Here we define a batch size of 64, i.e. each element
 # in the dataloader iterable will return a batch of 64 features and labels.
 
-batch_size = 64
+batch_size = params["batch_size"]
 
 # Create data loaders.
 train_dataloader = DataLoader(training_data, batch_size=batch_size)
@@ -128,7 +131,7 @@ print(model)
 # and an `optimizer <https://pytorch.org/docs/stable/optim.html>`_.
 
 loss_fn = nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
+optimizer = torch.optim.SGD(model.parameters(), lr=params["lr"])
 
 
 #######################################################################
@@ -177,7 +180,7 @@ def test(dataloader, model, loss_fn):
 # parameters to make better predictions. We print the model's accuracy and loss at each epoch; we'd like to see the
 # accuracy increase and the loss decrease with every epoch.
 
-epochs = 5
+epochs = params["epochs"]
 for t in range(epochs):
     print(f"Epoch {t+1}\n-------------------------------")
     train(train_dataloader, model, loss_fn, optimizer)
