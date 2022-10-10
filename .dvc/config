@@ -2,3 +2,5 @@
     remote = shared_folder
 ['remote "shared_folder"']
     url = /mnt/data
+['remote "drive"']
+    url = gdrive://1UhgZ96wcORoFXUMI0YDUZ4dPF7QJwOUz

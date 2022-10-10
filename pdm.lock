@@ -84,6 +84,12 @@ version = "3.6.4.0"
 summary = "Python multiprocessing fork with improvements and bugfixes"
 
 [[package]]
+name = "cachetools"
+version = "5.2.0"
+requires_python = "~=3.7"
+summary = "Extensible memoizing collections and decorators"
+
+[[package]]
 name = "celery"
 version = "5.2.7"
 requires_python = ">=3.7"
@@ -276,6 +282,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "dvc-gdrive"
+version = "2.19.0"
+requires_python = ">=3.8"
+summary = "gdrive plugin for dvc"
+dependencies = [
+    "dvc",
+    "pydrive2[fsspec]>=1.14.0",
+]
+
+[[package]]
 name = "dvc-http"
 version = "2.27.2"
 requires_python = ">=3.8"
@@ -327,6 +343,17 @@ dependencies = [
     "kombu<6,>=5.2.0",
     "pywin32>=225; sys_platform == \"win32\"",
     "shortuuid>=1.0.8",
+]
+
+[[package]]
+name = "dvc"
+version = "2.30.0"
+extras = ["gdrive"]
+requires_python = ">=3.8"
+summary = "Git for data scientists - manage your code and data together"
+dependencies = [
+    "dvc-gdrive==2.19.0",
+    "dvc==2.30.0",
 ]
 
 [[package]]
@@ -418,12 +445,77 @@ dependencies = [
 ]
 
 [[package]]
+name = "google-api-core"
+version = "2.10.2"
+requires_python = ">=3.7"
+summary = "Google API client core library"
+dependencies = [
+    "google-auth<3.0dev,>=1.25.0",
+    "googleapis-common-protos<2.0dev,>=1.56.2",
+    "protobuf!=3.20.0,!=3.20.1,!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<5.0.0dev,>=3.19.5",
+    "requests<3.0.0dev,>=2.18.0",
+]
+
+[[package]]
+name = "google-api-python-client"
+version = "2.64.0"
+requires_python = ">=3.7"
+summary = "Google API Client Library for Python"
+dependencies = [
+    "google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0dev,>=1.31.5",
+    "google-auth-httplib2>=0.1.0",
+    "google-auth<3.0.0dev,>=1.19.0",
+    "httplib2<1dev,>=0.15.0",
+    "uritemplate<5,>=3.0.1",
+]
+
+[[package]]
+name = "google-auth"
+version = "2.12.0"
+requires_python = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*"
+summary = "Google Authentication Library"
+dependencies = [
+    "cachetools<6.0,>=2.0.0",
+    "pyasn1-modules>=0.2.1",
+    "rsa<5,>=3.1.4; python_version >= \"3.6\"",
+    "six>=1.9.0",
+]
+
+[[package]]
+name = "google-auth-httplib2"
+version = "0.1.0"
+summary = "Google Authentication Library: httplib2 transport"
+dependencies = [
+    "google-auth",
+    "httplib2>=0.15.0",
+    "six",
+]
+
+[[package]]
+name = "googleapis-common-protos"
+version = "1.56.4"
+requires_python = ">=3.7"
+summary = "Common protobufs used in Google APIs"
+dependencies = [
+    "protobuf<5.0.0dev,>=3.15.0",
+]
+
+[[package]]
 name = "grandalf"
 version = "0.6"
 summary = "Graph and drawing algorithms framework"
 dependencies = [
     "future",
     "pyparsing",
+]
+
+[[package]]
+name = "httplib2"
+version = "0.20.4"
+requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+summary = "A comprehensive HTTP client library."
+dependencies = [
+    "pyparsing!=3.0.0,!=3.0.1,!=3.0.2,!=3.0.3,<4,>=2.4.2; python_version > \"3.0\"",
 ]
 
 [[package]]
@@ -498,6 +590,18 @@ requires_python = ">=3.8"
 summary = "NumPy is the fundamental package for array computing with Python."
 
 [[package]]
+name = "oauth2client"
+version = "4.1.3"
+summary = "OAuth 2.0 client library"
+dependencies = [
+    "httplib2>=0.9.1",
+    "pyasn1-modules>=0.0.5",
+    "pyasn1>=0.1.7",
+    "rsa>=3.1.4",
+    "six>=1.6.1",
+]
+
+[[package]]
 name = "omegaconf"
 version = "2.2.3"
 requires_python = ">=3.6"
@@ -538,10 +642,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "protobuf"
+version = "4.21.7"
+requires_python = ">=3.7"
+summary = ""
+
+[[package]]
 name = "psutil"
 version = "5.9.2"
 requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 summary = "Cross-platform lib for process and system monitoring in Python."
+
+[[package]]
+name = "pyasn1"
+version = "0.4.8"
+summary = "ASN.1 types and codecs"
+
+[[package]]
+name = "pyasn1-modules"
+version = "0.2.8"
+summary = "A collection of ASN.1-based protocols modules."
+dependencies = [
+    "pyasn1<0.5.0,>=0.4.6",
+]
 
 [[package]]
 name = "pycparser"
@@ -556,6 +679,33 @@ requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 summary = "Python interface to Graphviz's Dot"
 dependencies = [
     "pyparsing>=2.1.4",
+]
+
+[[package]]
+name = "pydrive2"
+version = "1.14.0"
+requires_python = ">=3.7"
+summary = "Google Drive API made easy. Maintained fork of PyDrive."
+dependencies = [
+    "PyYAML>=3.0",
+    "google-api-python-client>=1.12.5",
+    "oauth2client>=4.0.0",
+    "pyOpenSSL>=19.1.0",
+    "six>=1.13.0",
+]
+
+[[package]]
+name = "pydrive2"
+version = "1.14.0"
+extras = ["fsspec"]
+requires_python = ">=3.7"
+summary = "Google Drive API made easy. Maintained fork of PyDrive."
+dependencies = [
+    "appdirs>=1.4.3",
+    "fsspec>=2021.07.0",
+    "funcy>=1.14",
+    "pydrive2==1.14.0",
+    "tqdm>=4.0.0",
 ]
 
 [[package]]
@@ -577,6 +727,15 @@ summary = "Pygments is a syntax highlighting package written in Python."
 name = "pygtrie"
 version = "2.5.0"
 summary = "A pure Python trie data structure implementation."
+
+[[package]]
+name = "pyopenssl"
+version = "22.1.0"
+requires_python = ">=3.6"
+summary = "Python wrapper module around the OpenSSL library"
+dependencies = [
+    "cryptography<39,>=38.0.0",
+]
 
 [[package]]
 name = "pyparsing"
@@ -621,6 +780,15 @@ dependencies = [
     "commonmark<0.10.0,>=0.9.0",
     "pygments<3.0.0,>=2.6.0",
     "typing-extensions<5.0,>=4.0.0; python_version < \"3.9\"",
+]
+
+[[package]]
+name = "rsa"
+version = "4.9"
+requires_python = ">=3.6,<4"
+summary = "Pure-Python RSA implementation"
+dependencies = [
+    "pyasn1>=0.1.3",
 ]
 
 [[package]]
@@ -734,6 +902,12 @@ requires_python = ">=3.7"
 summary = "Backported and Experimental Type Hints for Python 3.7+"
 
 [[package]]
+name = "uritemplate"
+version = "4.1.1"
+requires_python = ">=3.6"
+summary = "Implementation of RFC 6570 URI Templates"
+
+[[package]]
 name = "urllib3"
 version = "1.26.12"
 requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, <4"
@@ -781,7 +955,7 @@ summary = "Backport of pathlib-compatible object wrapper for zip files"
 
 [metadata]
 lock_version = "4.0"
-content_hash = "sha256:1abffa243b24feb1498720fe7c3db1d83cba57a50d5b954b70c05d9b6ae165c7"
+content_hash = "sha256:ade6cc0d3773064003aa9ef8038e0845eb59769643cf7544f8d5f8644daf4a0c"
 
 [metadata.files]
 "aiohttp 3.8.3" = [
@@ -914,6 +1088,10 @@ content_hash = "sha256:1abffa243b24feb1498720fe7c3db1d83cba57a50d5b954b70c05d9b6
 "billiard 3.6.4.0" = [
     {url = "https://files.pythonhosted.org/packages/2b/89/0c43de91d4e52eaa7bd748771d417f6ac9e51e66b2f61928c2151bf65878/billiard-3.6.4.0-py3-none-any.whl", hash = "sha256:87103ea78fa6ab4d5c751c4909bcff74617d985de7fa8b672cf8618afd5a875b"},
     {url = "https://files.pythonhosted.org/packages/92/91/40de1901da8ec9eeb7c6a22143ba5d55d8aaa790761ca31342cedcd5c793/billiard-3.6.4.0.tar.gz", hash = "sha256:299de5a8da28a783d51b197d496bef4f1595dd023a93a4f59dde1886ae905547"},
+]
+"cachetools 5.2.0" = [
+    {url = "https://files.pythonhosted.org/packages/68/aa/5fc646cae6e997c3adf3b0a7e257cda75cff21fcba15354dffd67789b7bb/cachetools-5.2.0-py3-none-any.whl", hash = "sha256:f9f17d2aec496a9aa6b76f53e3b614c965223c061982d434d160f930c698a9db"},
+    {url = "https://files.pythonhosted.org/packages/c2/6f/278225c5a070a18a76f85db5f1238f66476579fa9b04cda3722331dcc90f/cachetools-5.2.0.tar.gz", hash = "sha256:6a94c6402995a99c3970cc7e4884bb60b4a8639938157eeed436098bf9831757"},
 ]
 "celery 5.2.7" = [
     {url = "https://files.pythonhosted.org/packages/1d/99/21fe9d1829cab4fc77d18f89d0c4cbcfe754e95f8b8f4af64fe4997c442f/celery-5.2.7-py3-none-any.whl", hash = "sha256:138420c020cd58d6707e6257b6beda91fd39af7afde5d36c6334d175302c0e14"},
@@ -1105,6 +1283,10 @@ content_hash = "sha256:1abffa243b24feb1498720fe7c3db1d83cba57a50d5b954b70c05d9b6
     {url = "https://files.pythonhosted.org/packages/28/07/447126117fb861a422a76e6dbbd73b9d9d0665fc55884cd3faac6ca57755/dvc_data-0.17.1-py3-none-any.whl", hash = "sha256:af0f7f21a090f25fd9a1a8f53aa7e0f7a16930054100584c66d015cb4c890bff"},
     {url = "https://files.pythonhosted.org/packages/c3/b5/a9a6090e8580867951b8c210613a9007db8063405de3e72ad39aeadc4bed/dvc-data-0.17.1.tar.gz", hash = "sha256:bb50e3fd8d2f24d29536e53e6b9811c93fa6013bbe8d8d35b26856e745d15fb2"},
 ]
+"dvc-gdrive 2.19.0" = [
+    {url = "https://files.pythonhosted.org/packages/75/e6/761ab3e4bbd563a9170d2292df7e990cd94388310cf849639dd0af8f41ca/dvc_gdrive-2.19.0-py3-none-any.whl", hash = "sha256:d709f0c524a118ebd1f56e9f27fe652f9dd3411004e3af56a7bbded16bf22e2d"},
+    {url = "https://files.pythonhosted.org/packages/d2/40/764837f7bb606fe795a9dbedb2eded16170d0ff75bc9f808ce405eecd6c8/dvc-gdrive-2.19.0.tar.gz", hash = "sha256:9fe1ec52f31822df37a56fb06f7eb696a936294145a16ab0498c664f17fa0f1a"},
+]
 "dvc-http 2.27.2" = [
     {url = "https://files.pythonhosted.org/packages/17/42/0099a0c68c6f4bedc5876ec1f8119ded885b3aa201a748a532572a710521/dvc-http-2.27.2.tar.gz", hash = "sha256:242bed287ba1055b7a59eb7931023f2b617b8e670330fbee52312d7b31eb4b44"},
     {url = "https://files.pythonhosted.org/packages/87/bd/e51c856d9375f165811af68a37867dbff5951f883daa7012939dad3fce74/dvc_http-2.27.2-py3-none-any.whl", hash = "sha256:58da8d1877bdc6db559d3c64f3ce304c30518dc85e5df29814fe7e56a7e72d5f"},
@@ -1217,10 +1399,34 @@ content_hash = "sha256:1abffa243b24feb1498720fe7c3db1d83cba57a50d5b954b70c05d9b6
     {url = "https://files.pythonhosted.org/packages/1e/2d/6ccc5a2a05a474e7ae7ef7b1372ead9381378c438da4cc3434109b376d82/GitPython-3.1.28.tar.gz", hash = "sha256:6bd3451b8271132f099ceeaf581392eaf6c274af74bb06144307870479d0697c"},
     {url = "https://files.pythonhosted.org/packages/95/a1/ddfb6b74fbcc4956f1000aa4f78a08f673752b977f7bc244b54bd620fd4c/GitPython-3.1.28-py3-none-any.whl", hash = "sha256:77bfbd299d8709f6af7e0c70840ef26e7aff7cf0c1ed53b42dd7fc3a310fcb02"},
 ]
+"google-api-core 2.10.2" = [
+    {url = "https://files.pythonhosted.org/packages/15/fb/b641357b0f8fc540c766bc8f66048de0398d0a3e0cad7c4a08e2fbee733a/google_api_core-2.10.2-py3-none-any.whl", hash = "sha256:34f24bd1d5f72a8c4519773d99ca6bf080a6c4e041b4e9f024fe230191dda62e"},
+    {url = "https://files.pythonhosted.org/packages/fe/d6/5dd223fc5cb476ab62966849f3e6466056799dbfc005d74da800eb097f7d/google-api-core-2.10.2.tar.gz", hash = "sha256:10c06f7739fe57781f87523375e8e1a3a4674bf6392cd6131a3222182b971320"},
+]
+"google-api-python-client 2.64.0" = [
+    {url = "https://files.pythonhosted.org/packages/a7/ff/a8bc30fdbc62ce1b504a878c586c72c9d3308508fca0aa7a7d694ec080da/google-api-python-client-2.64.0.tar.gz", hash = "sha256:0dc4c967a5c795e981af01340f1bd22173a986534de968b5456cb208ed6775a6"},
+    {url = "https://files.pythonhosted.org/packages/ac/d0/92f28755cd5acc74af17abecacb81997b1c8a73102cc77c611689b4fb638/google_api_python_client-2.64.0-py2.py3-none-any.whl", hash = "sha256:90545cd71969f8bcf15a6362c2a8c44c38b94ec35a88cfd60cf2c0df68a5eb74"},
+]
+"google-auth 2.12.0" = [
+    {url = "https://files.pythonhosted.org/packages/04/48/dd016f1f9d9414381a466c2e03c9ec4534366774957b412234b219a13e15/google_auth-2.12.0-py2.py3-none-any.whl", hash = "sha256:98f601773978c969e1769f97265e732a81a8e598da3263895023958d456ee625"},
+    {url = "https://files.pythonhosted.org/packages/19/dd/48e06d7ce02ebf53a2d36fcada99c68d7f6b10f2058ec4f76f7e2e81d9e6/google-auth-2.12.0.tar.gz", hash = "sha256:f12d86502ce0f2c0174e2e70ecc8d36c69593817e67e1d9c5e34489120422e4b"},
+]
+"google-auth-httplib2 0.1.0" = [
+    {url = "https://files.pythonhosted.org/packages/ba/db/721e2f3f32339080153995d16e46edc3a7657251f167ddcb9327e632783b/google_auth_httplib2-0.1.0-py2.py3-none-any.whl", hash = "sha256:31e49c36c6b5643b57e82617cb3e021e3e1d2df9da63af67252c02fa9c1f4a10"},
+    {url = "https://files.pythonhosted.org/packages/c6/b5/a9e956fd904ecb34ec9d297616fe98fa4106fc12f3b0a914dec983c267b9/google-auth-httplib2-0.1.0.tar.gz", hash = "sha256:a07c39fd632becacd3f07718dfd6021bf396978f03ad3ce4321d060015cc30ac"},
+]
+"googleapis-common-protos 1.56.4" = [
+    {url = "https://files.pythonhosted.org/packages/e2/fd/d9efa2085bd762fba3a637eb3e36d76d72eb6e083d170aeaca65a75f1f9c/googleapis_common_protos-1.56.4-py2.py3-none-any.whl", hash = "sha256:8eb2cbc91b69feaf23e32452a7ae60e791e09967d81d4fcc7fc388182d1bd394"},
+    {url = "https://files.pythonhosted.org/packages/f0/8e/190b3ac9bc75d6ead661398a07c6d6f013502c364fd6cc3d5c06427b8023/googleapis-common-protos-1.56.4.tar.gz", hash = "sha256:c25873c47279387cfdcbdafa36149887901d36202cb645a0e4f29686bf6e4417"},
+]
 "grandalf 0.6" = [
     {url = "https://files.pythonhosted.org/packages/0e/5a/129a9857f4970e3a543a7efe63ae1c6bad8d87f13162bdd5aa263636b539/grandalf-0.6-py2-none-any.whl", hash = "sha256:d671fdfa5310f2639538b6c858c4b1aef7755535ccfcb9c1cdf0d29171326add"},
     {url = "https://files.pythonhosted.org/packages/54/f4/a0b6a4c6d616d0a838b2dd0bc7bf74d73e8e8cdc880bab7fdb5fdc3d0e06/grandalf-0.6-py3-none-any.whl", hash = "sha256:357946e2fd35fc92c327cf3c091acc5aef93e0c74c60fed0a727d827ab3b1272"},
     {url = "https://files.pythonhosted.org/packages/a2/3f/df0618a962a1744e932f2a4547cb786f5a93df7e2476c99e7f7dbd68039f/grandalf-0.6.tar.gz", hash = "sha256:7471db231bd7338bc0035b16edf0dc0c900c82d23060f4b4d0c4304caedda6e4"},
+]
+"httplib2 0.20.4" = [
+    {url = "https://files.pythonhosted.org/packages/59/0f/29725a9caf4b2618f524e0f28e2bda91aca8f880123ec77426ede6ea1ea4/httplib2-0.20.4-py3-none-any.whl", hash = "sha256:8b6a905cb1c79eefd03f8669fd993c36dc341f7c558f056cb5a33b5c2f458543"},
+    {url = "https://files.pythonhosted.org/packages/9c/65/57ad964eb8d45cc3d1316ce5ada2632f74e35863a0e57a52398416a182a1/httplib2-0.20.4.tar.gz", hash = "sha256:58a98e45b4b1a48273073f905d2961666ecf0fbac4250ea5b47aef259eb5c585"},
 ]
 "hydra-core 1.2.0" = [
     {url = "https://files.pythonhosted.org/packages/68/0d/0da98325011cb09e1f6439f0adcc98a0f5261d3578bf182438562096913e/hydra_core-1.2.0-py3-none-any.whl", hash = "sha256:b6614fd6d6a97a9499f7ddbef02c9dd38f2fec6a9bc83c10e248db1dae50a528"},
@@ -1340,6 +1546,10 @@ content_hash = "sha256:1abffa243b24feb1498720fe7c3db1d83cba57a50d5b954b70c05d9b6
     {url = "https://files.pythonhosted.org/packages/e5/0e/c76c8cd19fa0477742e553471373e69f4aeb228b3b18aaac305a66cd5f5b/numpy-1.23.3-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:bc6e8da415f359b578b00bcfb1d08411c96e9a97f9e6c7adada554a0812a6cc6"},
     {url = "https://files.pythonhosted.org/packages/fe/8c/1dfc141202fb2b6b75f9ca4a6681eb5cb7f328d6d2d9d186e5675c468e6a/numpy-1.23.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d5422d6a1ea9b15577a9432e26608c73a78faf0b9039437b075cf322c92e98e7"},
 ]
+"oauth2client 4.1.3" = [
+    {url = "https://files.pythonhosted.org/packages/95/a9/4f25a14d23f0786b64875b91784607c2277eff25d48f915e39ff0cff505a/oauth2client-4.1.3-py2.py3-none-any.whl", hash = "sha256:b8a81cc5d60e2d364f0b1b98f958dbd472887acaf1a5b05e21c28c31a2d6d3ac"},
+    {url = "https://files.pythonhosted.org/packages/a6/7b/17244b1083e8e604bf154cf9b716aecd6388acd656dd01893d0d244c94d9/oauth2client-4.1.3.tar.gz", hash = "sha256:d486741e451287f69568a4d26d70d9acd73a2bbfa275746c535b4209891cccc6"},
+]
 "omegaconf 2.2.3" = [
     {url = "https://files.pythonhosted.org/packages/37/75/38ad9c93c61c0635dc19b6d5cacf1a78b1a6990ff557d1192296161f459e/omegaconf-2.2.3.tar.gz", hash = "sha256:59ff9fba864ffbb5fb710b64e8a9ba37c68fa339a2e2bb4f1b648d6901552523"},
     {url = "https://files.pythonhosted.org/packages/98/c3/f00dcd6935c11555db6ad55bdada58706120974cacf9a861a7b948ea0619/omegaconf-2.2.3-py3-none-any.whl", hash = "sha256:d6f2cbf79a992899eb76c6cb1aedfcf0fe7456a8654382edd5ee0c1b199c0657"},
@@ -1416,6 +1626,22 @@ content_hash = "sha256:1abffa243b24feb1498720fe7c3db1d83cba57a50d5b954b70c05d9b6
     {url = "https://files.pythonhosted.org/packages/26/ec/2ebddd1f0584fec4a6d4b5dc57627254070c3db310f00981bc5de03dd5ab/prompt_toolkit-3.0.31-py3-none-any.whl", hash = "sha256:9696f386133df0fc8ca5af4895afe5d78f5fcfe5258111c2a79a1c3e41ffa96d"},
     {url = "https://files.pythonhosted.org/packages/80/76/c94cf323ca362dd7baca8d8ddf3b5fe1576848bc0156522ad581c04f8446/prompt_toolkit-3.0.31.tar.gz", hash = "sha256:9ada952c9d1787f52ff6d5f3484d0b4df8952787c087edf6a1f7c2cb1ea88148"},
 ]
+"protobuf 4.21.7" = [
+    {url = "https://files.pythonhosted.org/packages/0b/d0/9dcc20484936170711f9e19aa7dd5b89111716310986044ad11ed4ede347/protobuf-4.21.7-cp38-cp38-win_amd64.whl", hash = "sha256:9e355f2a839d9930d83971b9f562395e13493f0e9211520f8913bd11efa53c02"},
+    {url = "https://files.pythonhosted.org/packages/16/b0/d9bb59c23d7695c30acdc110abd0712444f0b3d1f89bae3f28001b18c704/protobuf-4.21.7-cp38-cp38-win32.whl", hash = "sha256:8e09d1916386eca1ef1353767b6efcebc0a6859ed7f73cb7fb974feba3184830"},
+    {url = "https://files.pythonhosted.org/packages/36/32/13f22c179ccdd42c66e33516514bcbe838b33fda488986cf7160be904978/protobuf-4.21.7-cp37-cp37m-win32.whl", hash = "sha256:d3f89ccf7182293feba2de2739c8bf34fed1ed7c65a5cf987be00311acac57c1"},
+    {url = "https://files.pythonhosted.org/packages/44/4c/8dff463cf2722a0775f91a667c2c175a48cbe3e7e576f541a6931a8c9242/protobuf-4.21.7-cp39-cp39-win_amd64.whl", hash = "sha256:9643684232b6b340b5e63bb69c9b4904cdd39e4303d498d1a92abddc7e895b7f"},
+    {url = "https://files.pythonhosted.org/packages/56/23/f716074d2ed0af82c0d1da1eaa5e4bb086236568405f13ab0bbaaa6307fb/protobuf-4.21.7.tar.gz", hash = "sha256:71d9dba03ed3432c878a801e2ea51e034b0ea01cf3a4344fb60166cb5f6c8757"},
+    {url = "https://files.pythonhosted.org/packages/66/4f/965be350e19ebb807f210853b696d3da1456884837d2537f3d783277ea4f/protobuf-4.21.7-cp310-abi3-win32.whl", hash = "sha256:c7cb105d69a87416bd9023e64324e1c089593e6dae64d2536f06bcbe49cd97d8"},
+    {url = "https://files.pythonhosted.org/packages/8e/f4/f7118951bed32a1c2d4d1d54034c725a1f54bcb85689897a91ae119f54e0/protobuf-4.21.7-cp310-abi3-win_amd64.whl", hash = "sha256:3ec85328a35a16463c6f419dbce3c0fc42b3e904d966f17f48bae39597c7a543"},
+    {url = "https://files.pythonhosted.org/packages/90/e7/66a3cc24ee3eab6e81f0d26246aa965de1fe1ee79beeb76522cdbfd408d9/protobuf-4.21.7-cp37-abi3-manylinux2014_aarch64.whl", hash = "sha256:ca200645d6235ce0df3ccfdff1567acbab35c4db222a97357806e015f85b5744"},
+    {url = "https://files.pythonhosted.org/packages/98/a1/e13cbc34f08fac52ee13d7a92d3ecd77f492c73d3c0b3e3af3e15a5f2329/protobuf-4.21.7-cp39-cp39-win32.whl", hash = "sha256:f370c0a71712f8965023dd5b13277444d3cdfecc96b2c778b0e19acbfd60df6e"},
+    {url = "https://files.pythonhosted.org/packages/9a/99/3be5a99beb2f72e1a8c2fe680f0853044de1ee1219310a1a95460e41a3c2/protobuf-4.21.7-cp37-abi3-macosx_10_9_universal2.whl", hash = "sha256:db9056b6a11cb5131036d734bcbf91ef3ef9235d6b681b2fc431cbfe5a7f2e56"},
+    {url = "https://files.pythonhosted.org/packages/b7/1c/2d9ea79c2221732fca8433e048fe6f65caf8cf3e7f6d6d67f77b41984717/protobuf-4.21.7-cp37-abi3-manylinux2014_x86_64.whl", hash = "sha256:b019c79e23a80735cc8a71b95f76a49a262f579d6b84fd20a0b82279f40e2cc1"},
+    {url = "https://files.pythonhosted.org/packages/ce/37/64196aa65493d52332e45d1980ba6d443c99f5facaf05bd2e202ceb17451/protobuf-4.21.7-py2.py3-none-any.whl", hash = "sha256:8066322588d4b499869bf9f665ebe448e793036b552f68c585a9b28f1e393f66"},
+    {url = "https://files.pythonhosted.org/packages/dd/e6/c189b1ca5808923cbdf731f3912f9c4182593eb2d0afe31d8a73fc57806f/protobuf-4.21.7-cp37-cp37m-win_amd64.whl", hash = "sha256:a74d96cd960b87b4b712797c741bb3ea3a913f5c2dc4b6cbe9c0f8360b75297d"},
+    {url = "https://files.pythonhosted.org/packages/ef/87/67f99fbd3848cfbbd20e70644e134b33ad6f908c47f6461da03517f122f6/protobuf-4.21.7-py3-none-any.whl", hash = "sha256:58b81358ec6c0b5d50df761460ae2db58405c063fd415e1101209221a0a810e1"},
+]
 "psutil 5.9.2" = [
     {url = "https://files.pythonhosted.org/packages/04/5d/d52473097582db5d3094bc34acf9874de726327a3166426e22ed0806de6a/psutil-5.9.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:614337922702e9be37a39954d67fdb9e855981624d8011a9927b8f2d3c9625d9"},
     {url = "https://files.pythonhosted.org/packages/10/cf/7595896a7487937c171f53bae2eeb0adcc1690ebeef684ac180a77910639/psutil-5.9.2-cp39-cp39-win_amd64.whl", hash = "sha256:68b35cbff92d1f7103d8f1db77c977e72f49fcefae3d3d2b91c76b0e7aef48b8"},
@@ -1450,6 +1676,14 @@ content_hash = "sha256:1abffa243b24feb1498720fe7c3db1d83cba57a50d5b954b70c05d9b6
     {url = "https://files.pythonhosted.org/packages/df/aa/8268eee572fb9bdf3486d384e3973ad9d635403841c6e7f2af7781e5525b/psutil-5.9.2-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:dc9bda7d5ced744622f157cc8d8bdd51735dafcecff807e928ff26bdb0ff097d"},
     {url = "https://files.pythonhosted.org/packages/f0/43/bcb92221f5dd45e155337aae37e412fe02a3e5d99e936156a4dcff89fa55/psutil-5.9.2-cp36-cp36m-manylinux_2_12_i686.manylinux2010_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:d75291912b945a7351d45df682f9644540d564d62115d4a20d45fa17dc2d48f8"},
 ]
+"pyasn1 0.4.8" = [
+    {url = "https://files.pythonhosted.org/packages/62/1e/a94a8d635fa3ce4cfc7f506003548d0a2447ae76fd5ca53932970fe3053f/pyasn1-0.4.8-py2.py3-none-any.whl", hash = "sha256:39c7e2ec30515947ff4e87fb6f456dfc6e84857d34be479c9d4a4ba4bf46aa5d"},
+    {url = "https://files.pythonhosted.org/packages/a4/db/fffec68299e6d7bad3d504147f9094830b704527a7fc098b721d38cc7fa7/pyasn1-0.4.8.tar.gz", hash = "sha256:aef77c9fb94a3ac588e87841208bdec464471d9871bd5050a287cc9a475cd0ba"},
+]
+"pyasn1-modules 0.2.8" = [
+    {url = "https://files.pythonhosted.org/packages/88/87/72eb9ccf8a58021c542de2588a867dbefc7556e14b2866d1e40e9e2b587e/pyasn1-modules-0.2.8.tar.gz", hash = "sha256:905f84c712230b2c592c19470d3ca8d552de726050d1d1716282a1f6146be65e"},
+    {url = "https://files.pythonhosted.org/packages/95/de/214830a981892a3e286c3794f41ae67a4495df1108c3da8a9f62159b9a9d/pyasn1_modules-0.2.8-py2.py3-none-any.whl", hash = "sha256:a50b808ffeb97cb3601dd25981f6b016cbb3d31fbf57a8b8a87428e6158d0c74"},
+]
 "pycparser 2.21" = [
     {url = "https://files.pythonhosted.org/packages/5e/0b/95d387f5f4433cb0f53ff7ad859bd2c6051051cebbb564f139a999ab46de/pycparser-2.21.tar.gz", hash = "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"},
     {url = "https://files.pythonhosted.org/packages/62/d5/5f610ebe421e85889f2e55e33b7f9a6795bd982198517d912eb1c76e1a53/pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},
@@ -1457,6 +1691,10 @@ content_hash = "sha256:1abffa243b24feb1498720fe7c3db1d83cba57a50d5b954b70c05d9b6
 "pydot 1.4.2" = [
     {url = "https://files.pythonhosted.org/packages/13/6e/916cdf94f9b38ae0777b254c75c3bdddee49a54cc4014aac1460a7a172b3/pydot-1.4.2.tar.gz", hash = "sha256:248081a39bcb56784deb018977e428605c1c758f10897a339fce1dd728ff007d"},
     {url = "https://files.pythonhosted.org/packages/ea/76/75b1bb82e9bad3e3d656556eaa353d8cd17c4254393b08ec9786ac8ed273/pydot-1.4.2-py2.py3-none-any.whl", hash = "sha256:66c98190c65b8d2e2382a441b4c0edfdb4f4c025ef9cb9874de478fb0793a451"},
+]
+"pydrive2 1.14.0" = [
+    {url = "https://files.pythonhosted.org/packages/6d/8d/3ee523a3f176f4df586a1349243bbf780cffd44a2819cddc3922ae3a108d/PyDrive2-1.14.0-py3-none-any.whl", hash = "sha256:053a09b5f8e00d275aefc78da7c6b55da9d228aface2dfdbd4d2d49d3713da2b"},
+    {url = "https://files.pythonhosted.org/packages/ca/8c/d7392b8adf61762749afbde7bebf7ae06a4550d05fe030be63e920a13ba6/PyDrive2-1.14.0.tar.gz", hash = "sha256:db5da3be671630f571ca7100b281d8b5d72fd078acd425247a6d292e2b3d2840"},
 ]
 "pygit2 1.10.1" = [
     {url = "https://files.pythonhosted.org/packages/0f/6a/f903c5f7603fbf76500a75a00acdff23c342bb8c7d2aaaf81c27e68a78f0/pygit2-1.10.1-cp310-cp310-win_amd64.whl", hash = "sha256:11225811194ae6b9dbb34c2e8900e0eba6eacc180d82766e3dbddcbd2c6e6454"},
@@ -1504,6 +1742,10 @@ content_hash = "sha256:1abffa243b24feb1498720fe7c3db1d83cba57a50d5b954b70c05d9b6
 "pygtrie 2.5.0" = [
     {url = "https://files.pythonhosted.org/packages/b9/13/55deec25bf09383216fa7f1dfcdbfca40a04aa00b6d15a5cbf25af8fce5f/pygtrie-2.5.0.tar.gz", hash = "sha256:203514ad826eb403dab1d2e2ddd034e0d1534bbe4dbe0213bb0593f66beba4e2"},
     {url = "https://files.pythonhosted.org/packages/ec/cd/bd196b2cf014afb1009de8b0f05ecd54011d881944e62763f3c1b1e8ef37/pygtrie-2.5.0-py3-none-any.whl", hash = "sha256:8795cda8105493d5ae159a5bef313ff13156c5d4d72feddefacaad59f8c8ce16"},
+]
+"pyopenssl 22.1.0" = [
+    {url = "https://files.pythonhosted.org/packages/00/3f/ea5cfb789dddb327e6d2cf9377c36d9d8607af85530af0e7001165587ae7/pyOpenSSL-22.1.0-py3-none-any.whl", hash = "sha256:b28437c9773bb6c6958628cf9c3bebe585de661dba6f63df17111966363dd15e"},
+    {url = "https://files.pythonhosted.org/packages/e7/2f/c6d89edac75482f11e231b644e365d31d5479b7b727734e6a8f3d00decd5/pyOpenSSL-22.1.0.tar.gz", hash = "sha256:7a83b7b272dd595222d672f5ce29aa030f1fb837630ef229f62e72e395ce8968"},
 ]
 "pyparsing 3.0.9" = [
     {url = "https://files.pythonhosted.org/packages/6c/10/a7d0fa5baea8fe7b50f448ab742f26f52b80bfca85ac2be9d35cdd9a3246/pyparsing-3.0.9-py3-none-any.whl", hash = "sha256:5026bae9a10eeaefb61dab2f09052b9f4307d44aee4eda64b309723d8d206bbc"},
@@ -1578,6 +1820,10 @@ content_hash = "sha256:1abffa243b24feb1498720fe7c3db1d83cba57a50d5b954b70c05d9b6
 "rich 12.6.0" = [
     {url = "https://files.pythonhosted.org/packages/11/23/814edf09ec6470d52022b9e95c23c1bef77f0bc451761e1504ebd09606d3/rich-12.6.0.tar.gz", hash = "sha256:ba3a3775974105c221d31141f2c116f4fd65c5ceb0698657a11e9f295ec93fd0"},
     {url = "https://files.pythonhosted.org/packages/32/60/81ac2e7d1e3b861ab478a72e3b20fc91c4302acd2274822e493758941829/rich-12.6.0-py3-none-any.whl", hash = "sha256:a4eb26484f2c82589bd9a17c73d32a010b1e29d89f1604cd9bf3a2097b81bb5e"},
+]
+"rsa 4.9" = [
+    {url = "https://files.pythonhosted.org/packages/49/97/fa78e3d2f65c02c8e1268b9aba606569fe97f6c8f7c2d74394553347c145/rsa-4.9-py3-none-any.whl", hash = "sha256:90260d9058e514786967344d0ef75fa8727eed8a7d2e43ce9f4bcf1b536174f7"},
+    {url = "https://files.pythonhosted.org/packages/aa/65/7d973b89c4d2351d7fb232c2e452547ddfa243e93131e7cfa766da627b52/rsa-4.9.tar.gz", hash = "sha256:e38464a49c6c85d7f1351b0126661487a7e0a14a50f1675ec50eb34d4f20ef21"},
 ]
 "ruamel.yaml 0.17.21" = [
     {url = "https://files.pythonhosted.org/packages/46/a9/6ed24832095b692a8cecc323230ce2ec3480015fbfa4b79941bd41b23a3c/ruamel.yaml-0.17.21.tar.gz", hash = "sha256:8b7ce697a2f212752a35c1ac414471dc16c424c9573be4926b56ff3f5d23b7af"},
@@ -1697,6 +1943,10 @@ content_hash = "sha256:1abffa243b24feb1498720fe7c3db1d83cba57a50d5b954b70c05d9b6
 "typing-extensions 4.4.0" = [
     {url = "https://files.pythonhosted.org/packages/0b/8e/f1a0a5a76cfef77e1eb6004cb49e5f8d72634da638420b9ea492ce8305e8/typing_extensions-4.4.0-py3-none-any.whl", hash = "sha256:16fa4864408f655d35ec496218b85f79b3437c829e93320c7c9215ccfd92489e"},
     {url = "https://files.pythonhosted.org/packages/e3/a7/8f4e456ef0adac43f452efc2d0e4b242ab831297f1bac60ac815d37eb9cf/typing_extensions-4.4.0.tar.gz", hash = "sha256:1511434bb92bf8dd198c12b1cc812e800d4181cfcb867674e0f8279cc93087aa"},
+]
+"uritemplate 4.1.1" = [
+    {url = "https://files.pythonhosted.org/packages/81/c0/7461b49cd25aeece13766f02ee576d1db528f1c37ce69aee300e075b485b/uritemplate-4.1.1-py2.py3-none-any.whl", hash = "sha256:830c08b8d99bdd312ea4ead05994a38e8936266f84b9a7878232db50b044e02e"},
+    {url = "https://files.pythonhosted.org/packages/d2/5a/4742fdba39cd02a56226815abfa72fe0aa81c33bed16ed045647d6000eba/uritemplate-4.1.1.tar.gz", hash = "sha256:4346edfc5c3b79f694bccd6d6099a322bbeb628dbf2cd86eea55a456ce5124f0"},
 ]
 "urllib3 1.26.12" = [
     {url = "https://files.pythonhosted.org/packages/6f/de/5be2e3eed8426f871b170663333a0f627fc2924cc386cd41be065e7ea870/urllib3-1.26.12-py2.py3-none-any.whl", hash = "sha256:b930dd878d5a8afb066a637fbb35144fe7901e3b209d1cd4f524bd0e9deee997"},
