@@ -1,0 +1,4 @@
+[core]
+    remote = shared_folder
+['remote "shared_folder"']
+    url = /mnt/data

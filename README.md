@@ -153,3 +153,8 @@ pdm run dvc stage add -f \
     --plots-no-cache training/scalars \
     python quickstart_tutorial.py
 ```
+
+### Remotes
+Until now, all of our project data is kept within this directory. To make collaboration easier, DVC provides the ability to specify remotes. These are places to store any data cached by DVC such as input files or output files. 
+
+To start with a local example that would work on a shared machine. Assuming `/mnt/data` is a valid folder that is accessable by multiple people who wish to collaborate, we can add that directory as a cache within DVC by running `pdm run dvc remote add -d shared_folder /mnt/data`. We can compare our cached data to that of the cache by running `pdm run dvc status -r shared_folder` and it will show we have a number of new files that are not in the shared cache. Now, we can push our data to that shared folder with `pdm run dvc push`. Now, when a new person on the machine that has access to `/mnt/data`, clones the repository they can run `pdm run dvc pull -r shared_folder && pdm run dvc checkout` and they will get a copy of the cached data.
