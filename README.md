@@ -136,3 +136,20 @@ pdm run dvc stage add -f \
     -p epochs \
     python quickstart_tutorial.py
 ```
+
+### Metrics and Plots
+```bash
+pdm run dvc stage add -f \
+    -n tutorial \
+    -d quickstart_tutorial.py \
+    -d pyproject.toml \
+    -d pdm.lock \
+    -d data \
+    -o model.pth \
+    -p batch_size \
+    -p lr \
+    -p epochs \
+    -M training.json \
+    --plots-no-cache training/scalars \
+    python quickstart_tutorial.py
+```

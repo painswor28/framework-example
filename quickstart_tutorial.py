@@ -31,6 +31,10 @@ from yaml import safe_load
 
 params = safe_load(open("params.yaml"))
 
+from dvclive import Live
+
+live = Live("training")
+
 ######################################################################
 # PyTorch offers domain-specific libraries such as `TorchText <https://pytorch.org/text/stable/index.html>`_,
 # `TorchVision <https://pytorch.org/vision/stable/index.html>`_, and `TorchAudio <https://pytorch.org/audio/stable/index.html>`_,
@@ -141,6 +145,7 @@ optimizer = torch.optim.SGD(model.parameters(), lr=params["lr"])
 def train(dataloader, model, loss_fn, optimizer):
     size = len(dataloader.dataset)
     model.train()
+    last_loss = 0.0
     for batch, (X, y) in enumerate(dataloader):
         X, y = X.to(device), y.to(device)
 
@@ -155,7 +160,9 @@ def train(dataloader, model, loss_fn, optimizer):
 
         if batch % 100 == 0:
             loss, current = loss.item(), batch * len(X)
+            last_loss = loss
             print(f"loss: {loss:>7f}  [{current:>5d}/{size:>5d}]")
+    live.log("train/loss", last_loss)
 
 ##############################################################################
 # We also check the model's performance against the test dataset to ensure it is learning.
@@ -172,7 +179,9 @@ def test(dataloader, model, loss_fn):
             test_loss += loss_fn(pred, y).item()
             correct += (pred.argmax(1) == y).type(torch.float).sum().item()
     test_loss /= num_batches
+    live.log("test/loss", test_loss)
     correct /= size
+    live.log("test/accuracy", 100*correct)
     print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
 ##############################################################################
@@ -185,6 +194,7 @@ for t in range(epochs):
     print(f"Epoch {t+1}\n-------------------------------")
     train(train_dataloader, model, loss_fn, optimizer)
     test(test_dataloader, model, loss_fn)
+    live.next_step()
 print("Done!")
 
 ######################################################################

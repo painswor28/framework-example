@@ -12,6 +12,12 @@ stages:
     - batch_size
     - epochs
     - lr
+    metrics:
+    - training.json:
+        cache: false
+    plots:
+    - training/scalars:
+        cache: false
   evaluate:
     cmd: python quickstart_tutorial_eval.py
     deps:
