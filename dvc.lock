@@ -8,14 +8,14 @@ stages:
       size: 85828693
       nfiles: 8
     - path: pdm.lock
-      md5: 3f8fa32d8080e82a944eb259d85ffa2e
-      size: 232419
+      md5: 7837eacf4331995645a70c03ce623ab7
+      size: 242027
     - path: pyproject.toml
-      md5: e12a84008f5f486370de9933379bc675
-      size: 475
+      md5: a08f58a80e060e8da636eb12482ba700
+      size: 342
     - path: quickstart_tutorial.py
-      md5: d9980d85924ca43fbc9e122d75fe907c
-      size: 7816
+      md5: 37eeb3535559818f63c0d0f94a3e5ff7
+      size: 7837
     params:
       params.yaml:
         batch_size: 64
@@ -23,14 +23,14 @@ stages:
         lr: 0.001
     outs:
     - path: model.pth
-      md5: 709d318498dadf1f59fce74ef649da65
-      size: 2680919
-    - path: training.json
-      md5: c44113312be655571c68558b823134b9
-      size: 168
-    - path: training/scalars
-      md5: acb1e2b1372c5a529ee5906ae1b24896.dir
-      size: 579
+      md5: 064a5d2608f55134248786d1ed094d02
+      size: 2680967
+    - path: training/metrics.json
+      md5: d51db73c2d0288c7c47a2e25eda56e31
+      size: 170
+    - path: training/plots/metrics/
+      md5: e4dd5b7a70f78c4fa3775296156f480f.dir
+      size: 324
       nfiles: 3
   evaluate:
     cmd: python quickstart_tutorial_eval.py
@@ -40,14 +40,14 @@ stages:
       size: 85828693
       nfiles: 8
     - path: model.pth
-      md5: 709d318498dadf1f59fce74ef649da65
-      size: 2680919
+      md5: 064a5d2608f55134248786d1ed094d02
+      size: 2680967
     - path: pdm.lock
-      md5: 3f8fa32d8080e82a944eb259d85ffa2e
-      size: 232419
+      md5: 7837eacf4331995645a70c03ce623ab7
+      size: 242027
     - path: pyproject.toml
-      md5: e12a84008f5f486370de9933379bc675
-      size: 475
+      md5: a08f58a80e060e8da636eb12482ba700
+      size: 342
     - path: quickstart_tutorial_eval.py
       md5: 2e0c2d7114456f131ffc44aff4b7f9b6
       size: 4484

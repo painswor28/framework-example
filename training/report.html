@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="5">
+    <title>DVC Plot</title>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
+    
+    <style>
+        table {
+            border-spacing: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+        <div id="metrics_json" style="text-align: center; padding: 10x">
+            <p>metrics_json</p>
+            <div style="display: flex;justify-content: center;">
+                <table>
+<thead>
+<tr><th>train                       </th><th>test                                                        </th><th style="text-align: right;">  step</th></tr>
+</thead>
+<tbody>
+<tr><td>{&#x27;loss&#x27;: 1.0584934949874878}</td><td>{&#x27;loss&#x27;: 1.0787440925646739, &#x27;accuracy&#x27;: 63.959999999999994}</td><td style="text-align: right;">     4</td></tr>
+</tbody>
+</table>
+            </div>
+        </div>
+
+    <div id = "static_test_accuracy">
+        <script type = "text/javascript">
+            var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "values": [
+    {
+        "rev": "workspace",
+        "step": "0",
+        "test/accuracy": "45.24"
+    },
+    {
+        "rev": "workspace",
+        "step": "1",
+        "test/accuracy": "53.94"
+    },
+    {
+        "rev": "workspace",
+        "step": "2",
+        "test/accuracy": "59.62"
+    },
+    {
+        "rev": "workspace",
+        "step": "3",
+        "test/accuracy": "62.339999999999996"
+    },
+    {
+        "rev": "workspace",
+        "step": "4",
+        "test/accuracy": "63.959999999999994"
+    }
+]
+    },
+    "title": "",
+    "width": 300,
+    "height": 300,
+    "mark": {
+        "type": "line",
+        "point": true,
+        "tooltip": {
+            "content": "data"
+        }
+    },
+    "encoding": {
+        "x": {
+            "field": "step",
+            "type": "quantitative",
+            "title": "step"
+        },
+        "y": {
+            "field": "test/accuracy",
+            "type": "quantitative",
+            "title": "test/accuracy",
+            "scale": {
+                "zero": false
+            }
+        },
+        "color": {
+            "field": "rev",
+            "type": "nominal"
+        }
+    }
+}
+;
+            vegaEmbed('#static_test_accuracy', spec);
+        </script>
+    </div>
+    
+
+    <div id = "static_test_loss">
+        <script type = "text/javascript">
+            var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "values": [
+    {
+        "rev": "workspace",
+        "step": "0",
+        "test/loss": "2.145656398906829"
+    },
+    {
+        "rev": "workspace",
+        "step": "1",
+        "test/loss": "1.8684067346487836"
+    },
+    {
+        "rev": "workspace",
+        "step": "2",
+        "test/loss": "1.5019538759425948"
+    },
+    {
+        "rev": "workspace",
+        "step": "3",
+        "test/loss": "1.2400722036695784"
+    },
+    {
+        "rev": "workspace",
+        "step": "4",
+        "test/loss": "1.0787440925646739"
+    }
+]
+    },
+    "title": "",
+    "width": 300,
+    "height": 300,
+    "mark": {
+        "type": "line",
+        "point": true,
+        "tooltip": {
+            "content": "data"
+        }
+    },
+    "encoding": {
+        "x": {
+            "field": "step",
+            "type": "quantitative",
+            "title": "step"
+        },
+        "y": {
+            "field": "test/loss",
+            "type": "quantitative",
+            "title": "test/loss",
+            "scale": {
+                "zero": false
+            }
+        },
+        "color": {
+            "field": "rev",
+            "type": "nominal"
+        }
+    }
+}
+;
+            vegaEmbed('#static_test_loss', spec);
+        </script>
+    </div>
+    
+
+    <div id = "static_train_loss">
+        <script type = "text/javascript">
+            var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "values": [
+    {
+        "rev": "workspace",
+        "step": "0",
+        "train/loss": "2.144943952560425"
+    },
+    {
+        "rev": "workspace",
+        "step": "1",
+        "train/loss": "1.8583695888519287"
+    },
+    {
+        "rev": "workspace",
+        "step": "2",
+        "train/loss": "1.4760814905166626"
+    },
+    {
+        "rev": "workspace",
+        "step": "3",
+        "train/loss": "1.2130728960037231"
+    },
+    {
+        "rev": "workspace",
+        "step": "4",
+        "train/loss": "1.0584934949874878"
+    }
+]
+    },
+    "title": "",
+    "width": 300,
+    "height": 300,
+    "mark": {
+        "type": "line",
+        "point": true,
+        "tooltip": {
+            "content": "data"
+        }
+    },
+    "encoding": {
+        "x": {
+            "field": "step",
+            "type": "quantitative",
+            "title": "step"
+        },
+        "y": {
+            "field": "train/loss",
+            "type": "quantitative",
+            "title": "train/loss",
+            "scale": {
+                "zero": false
+            }
+        },
+        "color": {
+            "field": "rev",
+            "type": "nominal"
+        }
+    }
+}
+;
+            vegaEmbed('#static_train_loss', spec);
+        </script>
+    </div>
+    
+</body>
+</html>

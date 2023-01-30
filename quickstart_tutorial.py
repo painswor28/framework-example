@@ -162,7 +162,7 @@ def train(dataloader, model, loss_fn, optimizer):
             loss, current = loss.item(), batch * len(X)
             last_loss = loss
             print(f"loss: {loss:>7f}  [{current:>5d}/{size:>5d}]")
-    live.log("train/loss", last_loss)
+    live.log_metric("train/loss", last_loss)
 
 ##############################################################################
 # We also check the model's performance against the test dataset to ensure it is learning.
@@ -179,9 +179,9 @@ def test(dataloader, model, loss_fn):
             test_loss += loss_fn(pred, y).item()
             correct += (pred.argmax(1) == y).type(torch.float).sum().item()
     test_loss /= num_batches
-    live.log("test/loss", test_loss)
+    live.log_metric("test/loss", test_loss)
     correct /= size
-    live.log("test/accuracy", 100*correct)
+    live.log_metric("test/accuracy", 100*correct)
     print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
 ##############################################################################

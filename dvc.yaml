@@ -2,27 +2,27 @@ stages:
   tutorial:
     cmd: python quickstart_tutorial.py
     deps:
-    - data
-    - pdm.lock
-    - pyproject.toml
-    - quickstart_tutorial.py
+      - data
+      - pdm.lock
+      - pyproject.toml
+      - quickstart_tutorial.py
     outs:
-    - model.pth
+      - model.pth
     params:
-    - batch_size
-    - epochs
-    - lr
+      - batch_size
+      - epochs
+      - lr
     metrics:
-    - training.json:
-        cache: false
+      - training/metrics.json:
+          cache: false
     plots:
-    - training/scalars:
-        cache: false
+      - training/plots/metrics/:
+          cache: false
   evaluate:
     cmd: python quickstart_tutorial_eval.py
     deps:
-    - data
-    - model.pth
-    - pdm.lock
-    - pyproject.toml
-    - quickstart_tutorial_eval.py
+      - data
+      - model.pth
+      - pdm.lock
+      - pyproject.toml
+      - quickstart_tutorial_eval.py
