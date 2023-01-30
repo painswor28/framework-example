@@ -1,1 +1,9 @@
+.pdm.toml
+
+# NixOS
+.direnv/
+.venv/
+result
+
+# Project
 /data
