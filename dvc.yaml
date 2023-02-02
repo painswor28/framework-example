@@ -1,0 +1,8 @@
+stages:
+  tutorial:
+    cmd: python quickstart_tutorial.py
+    deps:
+    - data
+    - pdm.lock
+    - pyproject.toml
+    - quickstart_tutorial.py

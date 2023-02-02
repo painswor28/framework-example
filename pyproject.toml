@@ -1,0 +1,19 @@
+[tool]
+[tool.pdm]
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "painswor28", email = "painswor@nd.edu"},
+]
+dependencies = [
+    "torch>=1.13.1",
+    "torchvision>=0.14.1",
+    "dvc>=2.43.1",
+    "notebook>=6.5.2",
+    "nbdev>=2.3.10",
+]
+requires-python = ">=3.10"
+license = {text = "MIT"}
