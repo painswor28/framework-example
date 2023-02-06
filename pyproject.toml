@@ -2,8 +2,8 @@
 [tool.pdm]
 
 [project]
-name = ""
-version = ""
+name = "framework-example"
+version = "1.0.0"
 description = ""
 authors = [
     {name = "painswor28", email = "painswor@nd.edu"},
