@@ -5,5 +5,5 @@ website:
   title: "framework-example"
   site-url: "https://painswor28.github.io/framework-example"
   description: "An example taking the PyTorch getting started project and wrapping it with the best practices of the framework group."
-  repo-branch: main
+  repo-branch: nbdev
   repo-url: "https://github.com/painswor28/framework-example"
