@@ -1,18 +1,19 @@
 schema: '2.0'
+
 stages:
-  tutorial:
-    cmd: python quickstart_tutorial.py
+  nbdev:
+    cmd: jupyter nbconvert --to notebook --execute nbs/00_core.ipynb
     deps:
     - path: data
       md5: 18d3ba9f82aa57f2f5267753f1659e05.dir
       size: 85828693
       nfiles: 8
+    - path: nbs/00_core.ipynb
+      md5: b7a1e4dd6573b91adbe8932ab867927b
+      size: 14743
     - path: pdm.lock
-      md5: 99aa1d75f3916f30090fc561aac8ce49
-      size: 255702
+      md5: ae981a0eeac77a566faf6ec35d2549ff
+      size: 365921
     - path: pyproject.toml
-      md5: 8bc68a0bdb60477371557f2de2866175
-      size: 275
-    - path: quickstart_tutorial.py
-      md5: 7c8c08888db819696e18733511efd1b3
-      size: 8428
+      md5: 54d1b4fbc74cc3c07301850181c4afad
+      size: 471

@@ -1,8 +1,8 @@
 stages:
-  tutorial:
-    cmd: python quickstart_tutorial.py
+  nbdev:
+    cmd: jupyter nbconvert --to notebook --execute nbs/00_core.ipynb
     deps:
-    - data
-    - pdm.lock
-    - pyproject.toml
-    - quickstart_tutorial.py
+      - nbs/00_core.ipynb
+      - pdm.lock
+      - pyproject.toml
+      - data
