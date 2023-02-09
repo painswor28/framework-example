@@ -1,8 +1,8 @@
 stages:
   nbdev:
-    cmd: jupyter nbconvert --to notebook --execute nbs/00_core.ipynb
+    cmd: jupyter nbconvert --to script --execute nbs/00_training.ipynb
     deps:
-      - nbs/00_core.ipynb
+      - nbs/00_training.ipynb
       - pdm.lock
       - pyproject.toml
       - data

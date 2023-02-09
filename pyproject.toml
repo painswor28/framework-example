@@ -16,6 +16,7 @@ dependencies = [
     "nbdev>=2.3.10",
     "framework-example[dev] @ file:///Users/painsworth/Desktop/notebooks/deeplearning/framework-example",
     "nbconvert>=7.2.9",
+    "pre-commit>=3.0.4",
 ]
 requires-python = ">=3.10"
 license = {text = "MIT"}

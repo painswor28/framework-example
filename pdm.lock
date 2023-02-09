@@ -200,6 +200,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "cfgv"
+version = "3.3.1"
+requires_python = ">=3.6.1"
+summary = "Validate configuration and produce human readable error messages."
+
+[[package]]
 name = "charset-normalizer"
 version = "2.1.1"
 requires_python = ">=3.6.0"
@@ -302,6 +308,11 @@ name = "diskcache"
 version = "5.4.0"
 requires_python = ">=3"
 summary = "Disk Cache -- Disk and file backed persistent cache."
+
+[[package]]
+name = "distlib"
+version = "0.3.6"
+summary = "Distribution utilities"
 
 [[package]]
 name = "distro"
@@ -597,6 +608,12 @@ dependencies = [
     "omegaconf<2.4,>=2.2",
     "packaging",
 ]
+
+[[package]]
+name = "identify"
+version = "2.5.17"
+requires_python = ">=3.7"
+summary = "File identification library for Python"
 
 [[package]]
 name = "idna"
@@ -959,6 +976,15 @@ requires_python = ">=3.8"
 summary = "Python package for creating and manipulating graphs and networks"
 
 [[package]]
+name = "nodeenv"
+version = "1.7.0"
+requires_python = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*"
+summary = "Node.js virtual environment builder"
+dependencies = [
+    "setuptools",
+]
+
+[[package]]
 name = "notebook"
 version = "6.5.2"
 requires_python = ">=3.7"
@@ -1067,6 +1093,19 @@ name = "platformdirs"
 version = "2.6.2"
 requires_python = ">=3.7"
 summary = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
+
+[[package]]
+name = "pre-commit"
+version = "3.0.4"
+requires_python = ">=3.8"
+summary = "A framework for managing and maintaining multi-language pre-commit hooks."
+dependencies = [
+    "cfgv>=2.0.0",
+    "identify>=1.0.0",
+    "nodeenv>=0.11.1",
+    "pyyaml>=5.1",
+    "virtualenv>=20.10.0",
+]
 
 [[package]]
 name = "prometheus-client"
@@ -1426,6 +1465,17 @@ requires_python = ">=3.6"
 summary = "Promises, promises, promises."
 
 [[package]]
+name = "virtualenv"
+version = "20.19.0"
+requires_python = ">=3.7"
+summary = "Virtual Python Environment builder"
+dependencies = [
+    "distlib<1,>=0.3.6",
+    "filelock<4,>=3.4.1",
+    "platformdirs<4,>=2.4",
+]
+
+[[package]]
 name = "voluptuous"
 version = "0.13.1"
 summary = "UNKNOWN"
@@ -1484,7 +1534,7 @@ dependencies = [
 
 [metadata]
 lock_version = "4.1"
-content_hash = "sha256:704ffe7d3603eed6c12158645d1cc30e02252e657516a6c67e6e50dd74a4de31"
+content_hash = "sha256:0925d01a3095f186e4758d6d7307079dfba7ef92057525f9e12f9e8873bc82e3"
 
 [metadata.files]
 "aiohttp 3.8.3" = [
@@ -1748,6 +1798,10 @@ content_hash = "sha256:704ffe7d3603eed6c12158645d1cc30e02252e657516a6c67e6e50dd7
     {url = "https://files.pythonhosted.org/packages/f9/96/fc9e118c47b7adc45a0676f413b4a47554e5f3b6c99b8607ec9726466ef1/cffi-1.15.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:3799aecf2e17cf585d977b780ce79ff0dc9b78d799fc694221ce814c2c19db83"},
     {url = "https://files.pythonhosted.org/packages/ff/fe/ac46ca7b00e9e4f9c62e7928a11bc9227c86e2ff43526beee00cdfb4f0e8/cffi-1.15.1-cp27-cp27m-manylinux1_i686.whl", hash = "sha256:470c103ae716238bbe698d67ad020e1db9d9dba34fa5a899b5e21577e6d52ed2"},
 ]
+"cfgv 3.3.1" = [
+    {url = "https://files.pythonhosted.org/packages/6d/82/0a0ebd35bae9981dea55c06f8e6aaf44a49171ad798795c72c6f64cba4c2/cfgv-3.3.1-py2.py3-none-any.whl", hash = "sha256:c6a0883f3917a037485059700b9e75da2464e6c27051014ad85ba6aaa5884426"},
+    {url = "https://files.pythonhosted.org/packages/c4/bf/d0d622b660d414a47dc7f0d303791a627663f554345b21250e39e7acb48b/cfgv-3.3.1.tar.gz", hash = "sha256:f5a830efb9ce7a445376bb66ec94c638a9787422f96264c98edc6bdeed8ab736"},
+]
 "charset-normalizer 2.1.1" = [
     {url = "https://files.pythonhosted.org/packages/a1/34/44964211e5410b051e4b8d2869c470ae8a68ae274953b1c7de6d98bbcf94/charset-normalizer-2.1.1.tar.gz", hash = "sha256:5a3d016c7c547f69d6f81fb0db9449ce888b418b5b9952cc5e6e66843e9dd845"},
     {url = "https://files.pythonhosted.org/packages/db/51/a507c856293ab05cdc1db77ff4bc1268ddd39f29e7dc4919aa497f0adbec/charset_normalizer-2.1.1-py3-none-any.whl", hash = "sha256:83e9a75d1911279afd89352c68b45348559d1fc0506b054b346651b5e7fee29f"},
@@ -1839,6 +1893,10 @@ content_hash = "sha256:704ffe7d3603eed6c12158645d1cc30e02252e657516a6c67e6e50dd7
 "diskcache 5.4.0" = [
     {url = "https://files.pythonhosted.org/packages/a1/c4/80d38cf6852ba87f8b506a91f18b3a485c668f452700689add960d7e2ecc/diskcache-5.4.0-py3-none-any.whl", hash = "sha256:af3ec6d7f167bbef7b6c33d9ee22f86d3e8f2dd7131eb7c4703d8d91ccdc0cc4"},
     {url = "https://files.pythonhosted.org/packages/c7/34/d23a9bc5b2a84917879b977f00fdb97a7700b186a32bf7b0cf5f29f4c2d9/diskcache-5.4.0.tar.gz", hash = "sha256:8879eb8c9b4a2509a5e633d2008634fb2b0b35c2b36192d89655dbde02419644"},
+]
+"distlib 0.3.6" = [
+    {url = "https://files.pythonhosted.org/packages/58/07/815476ae605bcc5f95c87a62b95e74a1bce0878bc7a3119bc2bf4178f175/distlib-0.3.6.tar.gz", hash = "sha256:14bad2d9b04d3a36127ac97f30b12a19268f211063d8f8ee4f47108896e11b46"},
+    {url = "https://files.pythonhosted.org/packages/76/cb/6bbd2b10170ed991cf64e8c8b85e01f2fb38f95d1bc77617569e0b0b26ac/distlib-0.3.6-py2.py3-none-any.whl", hash = "sha256:f35c4b692542ca110de7ef0bea44d73981caeb34ca0b9b6b2e6d7790dda8f80e"},
 ]
 "distro 1.8.0" = [
     {url = "https://files.pythonhosted.org/packages/4b/89/eaa3a3587ebf8bed93e45aa79be8c2af77d50790d15b53f6dfc85b57f398/distro-1.8.0.tar.gz", hash = "sha256:02e111d1dc6a50abb8eed6bf31c3e48ed8b0830d1ea2a1b78c61765c2513fdd8"},
@@ -2073,6 +2131,10 @@ content_hash = "sha256:704ffe7d3603eed6c12158645d1cc30e02252e657516a6c67e6e50dd7
 "hydra-core 1.3.1" = [
     {url = "https://files.pythonhosted.org/packages/01/d1/d2e852afd72da2ca7f5ee1e71124ef61328282482b1cd8d96d37145bb947/hydra_core-1.3.1-py3-none-any.whl", hash = "sha256:d1c8b273eba0be68218c4ff1ae9a7df7430ce4aa580f1bbebc03297029761cf4"},
     {url = "https://files.pythonhosted.org/packages/bf/91/fe33688b6a28cfefd0f1d72c52ed47d71af43aa895e1e8381b5bf462635c/hydra-core-1.3.1.tar.gz", hash = "sha256:8dd42d551befc43dfca0c612cbd58c4f3e273dbd97a87214c1a030ba557d238b"},
+]
+"identify 2.5.17" = [
+    {url = "https://files.pythonhosted.org/packages/6b/c1/dcb61490b9324dd6c4b071835ce89840536a636512100e300e67e27ab447/identify-2.5.17.tar.gz", hash = "sha256:93cc61a861052de9d4c541a7acb7e3dcc9c11b398a2144f6e52ae5285f5f4f06"},
+    {url = "https://files.pythonhosted.org/packages/74/6f/752581a147e65f86c00ae0debb21f2217638ff3ca15e7a623f1ff53198a3/identify-2.5.17-py2.py3-none-any.whl", hash = "sha256:7d526dd1283555aafcc91539acc061d8f6f59adb0a7bba462735b0a318bff7ed"},
 ]
 "idna 3.4" = [
     {url = "https://files.pythonhosted.org/packages/8b/e1/43beb3d38dba6cb420cefa297822eac205a277ab43e5ba5d5c46faf96438/idna-3.4.tar.gz", hash = "sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4"},
@@ -2317,6 +2379,10 @@ content_hash = "sha256:704ffe7d3603eed6c12158645d1cc30e02252e657516a6c67e6e50dd7
     {url = "https://files.pythonhosted.org/packages/11/eb/929b1a04b1778f4dd606c739c93c134306e4a31012e31e184c8308f3d985/networkx-3.0-py3-none-any.whl", hash = "sha256:58058d66b1818043527244fab9d41a51fcd7dcc271748015f3c181b8a90c8e2e"},
     {url = "https://files.pythonhosted.org/packages/99/f9/d45c9ecf50a6b67a200e0bbd324201b5cd777dfc0e6c8f6d1620ce5a7ada/networkx-3.0.tar.gz", hash = "sha256:9a9992345353618ae98339c2b63d8201c381c2944f38a2ab49cb45a4c667e412"},
 ]
+"nodeenv 1.7.0" = [
+    {url = "https://files.pythonhosted.org/packages/96/a8/d3b5baead78adadacb99e7281b3e842126da825cf53df61688cfc8b8ff91/nodeenv-1.7.0-py2.py3-none-any.whl", hash = "sha256:27083a7b96a25f2f5e1d8cb4b6317ee8aeda3bdd121394e5ac54e498028a042e"},
+    {url = "https://files.pythonhosted.org/packages/f3/9d/a28ecbd1721cd6c0ea65da6bfb2771d31c5d7e32d916a8f643b062530af3/nodeenv-1.7.0.tar.gz", hash = "sha256:e0e7f7dfb85fc5394c6fe1e8fa98131a2473e04311a45afb6508f7cf1836fa2b"},
+]
 "notebook 6.5.2" = [
     {url = "https://files.pythonhosted.org/packages/41/15/a4285abb25c87dec3002cd7eab88320ef21448effdd3714840695aafab12/notebook-6.5.2.tar.gz", hash = "sha256:c1897e5317e225fc78b45549a6ab4b668e4c996fd03a04e938fe5e7af2bfffd0"},
     {url = "https://files.pythonhosted.org/packages/db/40/2d321ba572dc9a94a090d92c9826291a1dcee1e05bc6c1d641ce419b701d/notebook-6.5.2-py3-none-any.whl", hash = "sha256:e04f9018ceb86e4fa841e92ea8fb214f8d23c1cedfde530cc96f92446924f0e4"},
@@ -2515,6 +2581,10 @@ content_hash = "sha256:704ffe7d3603eed6c12158645d1cc30e02252e657516a6c67e6e50dd7
 "platformdirs 2.6.2" = [
     {url = "https://files.pythonhosted.org/packages/c1/c7/9be9d651b93efce682b45142a6267034fc4215972780748618c02e236361/platformdirs-2.6.2-py3-none-any.whl", hash = "sha256:83c8f6d04389165de7c9b6f0c682439697887bca0aa2f1c87ef1826be3584490"},
     {url = "https://files.pythonhosted.org/packages/cf/4d/198b7e6c6c2b152f4f9f4cdf975d3590e33e63f1920f2d89af7f0390e6db/platformdirs-2.6.2.tar.gz", hash = "sha256:e1fea1fe471b9ff8332e229df3cb7de4f53eeea4998d3b6bfff542115e998bd2"},
+]
+"pre-commit 3.0.4" = [
+    {url = "https://files.pythonhosted.org/packages/7e/ba/4d263a47ded76149dcbd11a1cc4035413f5765ffe407810338209c2a2d43/pre_commit-3.0.4.tar.gz", hash = "sha256:bc4687478d55578c4ac37272fe96df66f73d9b5cf81be6f28627d4e712e752d5"},
+    {url = "https://files.pythonhosted.org/packages/cb/5c/d74ae18271f63d15c40851ccbff8f5dd259454f5225245ca85152e77ab85/pre_commit-3.0.4-py2.py3-none-any.whl", hash = "sha256:9e3255edb0c9e7fe9b4f328cb3dc86069f8fdc38026f1bf521018a05eaf4d67b"},
 ]
 "prometheus-client 0.16.0" = [
     {url = "https://files.pythonhosted.org/packages/5b/8e/6a546e439b4366ab9eab0a736876eb1e1916dd93b4a1fa560ef711d24f8c/prometheus_client-0.16.0-py3-none-any.whl", hash = "sha256:0836af6eb2c8f4fed712b2f279f6c0a8bbab29f9f4aa15276b91c7cb0d1616ab"},
@@ -2983,6 +3053,10 @@ content_hash = "sha256:704ffe7d3603eed6c12158645d1cc30e02252e657516a6c67e6e50dd7
 "vine 5.0.0" = [
     {url = "https://files.pythonhosted.org/packages/66/b2/8954108816865edf2b1e0d24f3c2c11dfd7232f795bcf1e4164fb8ee5e15/vine-5.0.0.tar.gz", hash = "sha256:7d3b1624a953da82ef63462013bbd271d3eb75751489f9807598e8f340bd637e"},
     {url = "https://files.pythonhosted.org/packages/8d/61/a7badb48186919a9fd7cf0ef427cab6d16e0ed474035c36fa64ddd72bfa2/vine-5.0.0-py2.py3-none-any.whl", hash = "sha256:4c9dceab6f76ed92105027c49c823800dd33cacce13bdedc5b914e3514b7fb30"},
+]
+"virtualenv 20.19.0" = [
+    {url = "https://files.pythonhosted.org/packages/3d/ad/906d59bbcb0e6178989cee52166a8a6651ddaea18b38e728eaac22e61cad/virtualenv-20.19.0.tar.gz", hash = "sha256:37a640ba82ed40b226599c522d411e4be5edb339a0c0de030c0dc7b646d61590"},
+    {url = "https://files.pythonhosted.org/packages/51/19/6a5c76a1f622d5e72ca156345843879cfe3d13b918b40b93ef542aa2a855/virtualenv-20.19.0-py3-none-any.whl", hash = "sha256:54eb59e7352b573aa04d53f80fc9736ed0ad5143af445a1e539aada6eb947dd1"},
 ]
 "voluptuous 0.13.1" = [
     {url = "https://files.pythonhosted.org/packages/72/0c/0ed7352eeb7bd3d53d2c0ae87fa1e222170f53815b8df7d9cdce7ffedec0/voluptuous-0.13.1.tar.gz", hash = "sha256:e8d31c20601d6773cb14d4c0f42aee29c6821bbd1018039aac7ac5605b489723"},

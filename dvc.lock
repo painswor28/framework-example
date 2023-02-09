@@ -2,18 +2,18 @@ schema: '2.0'
 
 stages:
   nbdev:
-    cmd: jupyter nbconvert --to notebook --execute nbs/00_core.ipynb
+    cmd: jupyter nbconvert --to script --execute nbs/00_training.ipynb
     deps:
     - path: data
       md5: 18d3ba9f82aa57f2f5267753f1659e05.dir
       size: 85828693
       nfiles: 8
-    - path: nbs/00_core.ipynb
+    - path: nbs/00_training.ipynb
       md5: b7a1e4dd6573b91adbe8932ab867927b
       size: 14743
     - path: pdm.lock
-      md5: ae981a0eeac77a566faf6ec35d2549ff
-      size: 365921
+      md5: 635e938fc5a1b18755a74a3d9b3d3415
+      size: 369947
     - path: pyproject.toml
-      md5: 54d1b4fbc74cc3c07301850181c4afad
-      size: 471
+      md5: 5fc8e2713398de579bf5feaf96aae254
+      size: 496
